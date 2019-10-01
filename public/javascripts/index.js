@@ -1,5 +1,5 @@
 
-const api = 'https://cloud.iexapis.com/stable/stock/aapl/chart/5y?token=pk_8eaac873d80f461cb152c10d5918fa18';
+const api = 'https://cloud.iexapis.com/stable/stock/aapl/chart/5d?token=pk_dfb132b12db14003bfeb90dc058b276c&chartCloseOnly=true';
 
 document.addEventListener("DOMContentLoaded", function (event) {
     fetch(api)
@@ -32,7 +32,42 @@ function drawChart(data) {
         .attr("height", svgHeight)
 
     let g = svg.append('g')
-        attr("transform", "translate(" + margin.left + "," + margin.top +")");
+        .attr("transform", "translate(" + margin.left + "," + margin.top +")");
 
-        
+    let x = d3.scaleTime()
+        .rangeRound([0, width]);
+    let y = d3.scaleLinear()
+        .rangeRound([height, 0]);
+
+    let line = d3.line()
+        .x(function (d) { return x(d.date) })
+        .y(function (d) { return y(d.value) })   
+        x.domain(d3.extent(data, function (d) { return d.date })); 
+        y.domain(d3.extent(data, function (d) { return d.value }));
+    
+    g.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x))
+        .select(".domain")
+        .remove();
+
+    g.append("g")
+        .call(d3.axisLeft(y))
+        .append("text")
+        .attr("fill", "#000")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", "0.71em")
+        .attr("text-anchor", "end")
+        .text("Price ($)");
+
+    g.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "steelblue")
+        .attr("stroke-linejoin", "round")
+        .attr("stroke-linecap", "round").attr("stroke-width", 1.5).attr("d", line);
+
+
+
 }
