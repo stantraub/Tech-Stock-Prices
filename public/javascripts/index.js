@@ -12,11 +12,27 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 function parseData(data) {
-    var arr = [];
-    for (var i in data.bpi) {
+    let arr = [];
+    for (let i in data.close) {
         arr.push({ date: new Date(i), //date            
-            value: +data.bpi[i] //convert string to number         
+            value: +data.close[i] //convert string to number         
         });   
     }   
     return arr;
+}
+
+function drawChart(data) {
+    let svgWidth = 600, svgHeight = 400;
+    let margin = { top: 20, right: 20, bottom: 30, left: 50 };
+    let width = svgWidth - margin.left - margin.right; 
+    let height = svgHeight - margin.top - margin.bottom;
+
+    let svg = d3.select('svg')
+        .attr("width", svgWidth)
+        .attr("height", svgHeight)
+
+    let g = svg.append('g')
+        attr("transform", "translate(" + margin.left + "," + margin.top +")");
+
+        
 }
