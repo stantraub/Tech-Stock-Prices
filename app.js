@@ -35,7 +35,7 @@ app.get('/search', (request, response) => {
     });
 });
 
-app.listen(PORT, () => {
+app.listen(8000, () => {
   console.log(__dirname);
-  console.log(`listening on ${PORT}`)
+  console.log(`listening on ${8000}`)
 })
