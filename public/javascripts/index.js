@@ -1,26 +1,22 @@
-const axios = require('axios');
 
-document.addEventListener('DOMContentLoaded', () => {
+const api = 'https://cloud.iexapis.com/stable/stock/aapl/chart/5y?token=pk_8eaac873d80f461cb152c10d5918fa18';
 
-    d3.select('h1').style('color', 'red');
+document.addEventListener("DOMContentLoaded", function (event) {
+    fetch(api)
+        .then(function (response) { return response.json(); })
+        .then(function (data) {
+                   //DO SOMETHING WITH DATA      
+            let parsedData = parseData(data);
+            drawChart(parsedData);
+        })
+});
 
-
-    // let isbn = '0201558025';
-    // axios.get(`/books/${isbn}`)
-    // .then((response) => {
-    //     console.log(response); 
-    // })
-    // .catch(function (error) {
-    //     console.log(error);
-    // });
-
-    // let query = "grace hopper";
-    // axios.get(`/search?string=${query}`)
-    // .then((response) => {
-    //     console.log(response);
-    // })
-    // .catch(function (error) {
-    //     console.log(error);
-    // });
-    
-})
+function parseData(data) {
+    var arr = [];
+    for (var i in data.bpi) {
+        arr.push({ date: new Date(i), //date            
+            value: +data.bpi[i] //convert string to number         
+        });   
+    }   
+    return arr;
+}
