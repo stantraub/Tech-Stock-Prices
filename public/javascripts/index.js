@@ -32,7 +32,7 @@ function parseData(data) {
 
 function drawChart(data) {
     console.log(data);
-    let svgWidth = 1000, svgHeight = 600;
+    let svgWidth = 500, svgHeight = 300;
     let margin = { top: 20, right: 20, bottom: 30, left: 50 };
     let width = svgWidth - margin.left - margin.right; 
     let height = svgHeight - margin.top - margin.bottom;
@@ -87,12 +87,12 @@ function drawChart(data) {
         .attr("y", 6)
         .attr("dy", "0.71em")
         .attr("text-anchor", "end")
-        .text("Price ($)");
+        .text("Close ($)");
 
     g.append("path")
         .datum(data)
         .attr("fill", "none")
-        .attr("stroke", "steelblue")
+        .attr("stroke", "green")
         .attr("stroke-linejoin", "round")
         .attr("stroke-linecap", "round")
         .attr("stroke-width", 1.5)

@@ -9,11 +9,20 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
   </head>
   <body>
-    <div>
-      <h1 class="heading">Weekly Year Tech Stock Prices for major tech companies</h1>
+    <div class="top">
+      <h1 class="heading">Weekly Tech Stock Prices</h1>
     </div>
-    <div>
-      <svg class="line-chart"></svg>
+    <div class="company-info">
+      <div class="charts">
+        <div class="line-chart-div">
+
+          <h2 class="chart-heading">Performance:</h2>
+          <svg class="line-chart" id="svg1"></svg>
+        </div>
+        <div>
+          <svg class="pie-chart" id='svg2'></svg>
+        </div>
+      </div>
     </div>
     <main id='main'></main>
   </body>
