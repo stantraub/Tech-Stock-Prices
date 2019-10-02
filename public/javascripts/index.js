@@ -32,7 +32,7 @@ function parseData(data) {
 
 function drawChart(data) {
     console.log(data);
-    let svgWidth = 500, svgHeight = 300;
+    let svgWidth = 600, svgHeight = 400;
     let margin = { top: 20, right: 20, bottom: 30, left: 50 };
     let width = svgWidth - margin.left - margin.right; 
     let height = svgHeight - margin.top - margin.bottom;
