@@ -1,9 +1,9 @@
 
-const api = 'https://cloud.iexapis.com/stable/stock/aapl/chart/5d?token=pk_dfb132b12db14003bfeb90dc058b276c&chartCloseOnly=true';
+const chart = 'https://cloud.iexapis.com/stable/stock/aapl/chart/5d?token=pk_dfb132b12db14003bfeb90dc058b276c&chartCloseOnly=true';
 const info = 'https://cloud.iexapis.com/stable/stock/aapl/company?token=pk_dfb132b12db14003bfeb90dc058b276c&format=json';
 // const api = 'https://api.coindesk.com/v1/bpi/historical/close.json?start=2017-12-31&end=2018-04-01';
 document.addEventListener("DOMContentLoaded", function (event) {
-    fetch(api)
+    fetch(chart)
         .then(function (response) { return response.json(); })
         .then(function (data) {
                    //DO SOMETHING WITH DATA      
