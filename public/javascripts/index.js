@@ -27,12 +27,19 @@ function parseData(data) {
         arr.push({ date: new Date(data[i].date), //date            
             close: data[i].close //convert string to number         
         });   
+
     }   
+
+    const closing = document.getElementById('closing');
+    let last = arr[arr.length - 1];
+    closing.innerHTML = last.close;
+
     return arr;
+
+    
 }
 
 function drawChart(data) {
-    console.log(data);
     let svgWidth = 600, svgHeight = 400;
     let margin = { top: 20, right: 20, bottom: 30, left: 50 };
     let width = svgWidth - margin.left - margin.right; 

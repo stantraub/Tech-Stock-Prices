@@ -13,6 +13,7 @@
 .dropdown {
     display: flex;
     flex-direction: row;
+    padding: 30px;
 }
 
 .selection-text {
@@ -33,6 +34,11 @@
     padding: 30px;
 }
 
+.closing-div {
+    font-size: 36px;
+    font-weight: 600;
+}
+
 .chart-heading {
  font-size: 20px;
 }
@@ -40,7 +46,7 @@
 .info-box {
     width: 400px;
     height: 400px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     /* transform: translateY(20px); */
 }
 
@@ -48,4 +54,8 @@
     border: 1px solid black;
     /* transform: translateY(20px); */
     
+}
+
+.comp-name {
+    font-weight: 600;
 }
