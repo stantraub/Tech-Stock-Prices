@@ -34,14 +34,31 @@ function parseData(data) {
 
     const closing = document.getElementById('closing');
     const change = document.getElementById('change');
+    const percentage = document.getElementById('percentage');
     let last = arr[arr.length - 1];
     
     let difference = Math.round((last.close - arr[arr.length - 2].close)* 100)/100;
+    let difpercent = Math.round(((last.close - arr[arr.length - 2].close) / arr[arr.length - 2].close) * 100) / 100;
     // rounded = Math.round(difference * 100)/100;
-
+    // let difference = 5.60
     console.log(change);
     closing.innerHTML = last.close;
-    change.innerHTML = difference;
+    
+    if (difference < 0) {
+        change.style.color = "Red";
+        change.innerHTML = "-" + Math.abs(difference);
+    } else {
+        change.style.color = "Green";
+        change.innerHTML = "+" + difference;
+    }
+
+    if (difpercent < 0) {
+        percentage.style.color = "Red";
+        percentage.innerHTML = "(" + "-" + Math.abs(difpercent) + "%" + ")";
+    } else {
+        percentage.style.color = "Green";
+        percentage.innerHTML = "(" + "+" + difpercent + "%" + ")";
+    }
     return arr;
 
     
