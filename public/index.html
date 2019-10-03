@@ -7,6 +7,47 @@
     <link rel="stylesheet" href="index.css">
     <script type="text/javascript" src="./bundle.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1TKWOFXouxVLLINDYmhk5XVyR7BQaxxw&callback=initMap" async
+      defer></script>
+        <script>
+          function initMap() {
+            // Map options
+            let options = {
+              zoom: 10,
+              center: { lat: 37.33182, lng: -122.03118 }
+            }
+            // New map
+            let map = new google.maps.Map(document.getElementById('map'), options);
+
+            addMarker({
+              coords:{ lat: 37.33182, lng: -122.03118 },
+              content: '<h1>Company HQ</h1>'
+            });
+
+            function addMarker(props){
+              let marker = new google.maps.Marker({
+                position: props.coords,
+                map: map
+              });
+
+              let infoWindow = new google.maps.InfoWindow({
+                content: props.content
+              });
+
+              marker.addListener('click', function(){
+                infoWindow.open(map, marker);
+              });
+
+            }
+
+          }
+        </script>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
   </head>
   <body class="body">
     <div class="top">
@@ -31,7 +72,7 @@
           <svg class="pie-chart" id='svg2'></svg>
         </div>
       </div>
-      <div class="company-info-div">
+      <div class="company-chart-div">
         <!-- <h2 class="chart-heading">Company Info:</h2> -->
         <div>
         
@@ -90,9 +131,19 @@
             </tr>
             </tr>
           </table>
+          <div class="map-div" id='map'>
+          
+          
+          
+          </div>
         </div>
+        
       </div>
     </div>
     <main id='main'></main>
+   
+ 
+  
+    
   </body>
 </html>

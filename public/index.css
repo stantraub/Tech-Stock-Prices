@@ -30,9 +30,15 @@
 
 .company-info-div {
     display: flex;
-    
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     padding: 30px;
+}
+
+.company-chart-div {
+    display: flex;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 30px;
+    width: 400px;
 }
 
 /* .stock-info {
@@ -54,7 +60,7 @@
 }
 
 .info-box {
-    width: 400px;
+    width: 100%;
     height: 400px;
     /* border: 1px solid black; */
     /* transform: translateY(20px); */
@@ -83,5 +89,10 @@
 }
 
 .change-font {
-    font-size: 20px;
+    font-size: 24px;
+    padding-left: 10px;
+}
+
+.map-div {
+    width: 500px;
 }
