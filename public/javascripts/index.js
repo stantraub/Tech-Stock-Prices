@@ -31,9 +31,15 @@ function parseData(data) {
     }   
 
     const closing = document.getElementById('closing');
+    const change = document.getElementById('change');
     let last = arr[arr.length - 1];
-    closing.innerHTML = last.close;
+    
+    let difference = Math.round((last.close - arr[arr.length - 2].close)* 100)/100;
+    // rounded = Math.round(difference * 100)/100;
 
+    console.log(change);
+    closing.innerHTML = last.close;
+    change.innerHTML = difference;
     return arr;
 
     
