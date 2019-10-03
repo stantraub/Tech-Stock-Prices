@@ -1,5 +1,6 @@
 
 const api = 'https://cloud.iexapis.com/stable/stock/aapl/chart/5d?token=pk_dfb132b12db14003bfeb90dc058b276c&chartCloseOnly=true';
+const info = 'https://cloud.iexapis.com/stable/stock/aapl/company?token=pk_dfb132b12db14003bfeb90dc058b276c&format=json';
 // const api = 'https://api.coindesk.com/v1/bpi/historical/close.json?start=2017-12-31&end=2018-04-01';
 document.addEventListener("DOMContentLoaded", function (event) {
     fetch(api)
@@ -8,6 +9,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
                    //DO SOMETHING WITH DATA      
             let parsedData = parseData(data);
             drawChart(parsedData);
+        });
+
+    fetch(info)
+        .then(function (response) { return response.json(); })
+        .then(function (data) {
+            //DO SOMETHING WITH DATA      
+        
+            parseCompanyData(data);
         })
 });
 
@@ -22,14 +31,6 @@ function parseData(data) {
     return arr;
 }
 
-// function parseData(data) {
-//     var arr = []; for (var i in data.bpi) {
-//         arr.push({
-//             date: new Date(i), //date            
-//             value: +data.bpi[i] //convert string to number
-//                  });   }   return arr;}
-
-
 function drawChart(data) {
     console.log(data);
     let svgWidth = 600, svgHeight = 400;
@@ -37,19 +38,19 @@ function drawChart(data) {
     let width = svgWidth - margin.left - margin.right; 
     let height = svgHeight - margin.top - margin.bottom;
 
-    let svg = d3.select('svg')
+    let svg1 = d3.select('#svg1')
         .attr("width", svgWidth)
         .attr("height", svgHeight)
 
-    let g = svg.append('g')
+    let g = svg1.append('g')
         .attr("transform", "translate(" + margin.left + "," + margin.top +")");
 
     let x = d3.scaleTime()
         .rangeRound([0, width]);
+        
     let y = d3.scaleLinear()
         .rangeRound([height, 0]);
 
-    
     // let line = d3.line()
     // .x(function (d) {
     //     console.log(d);
@@ -98,6 +99,27 @@ function drawChart(data) {
         .attr("stroke-width", 1.5)
         .attr("d", line);
 
-
-
 }
+
+function parseCompanyData(data) {
+        const symbol = document.getElementById('symbol');
+        const company = document.getElementById('company');
+        const site = document.getElementById('site');
+        const ceo = document.getElementById('ceo');
+        const sec = document.getElementById('sec');
+        const emp = document.getElementById('emp');
+        const st = document.getElementById('st');
+        const city = document.getElementById('city');
+    
+        symbol.innerHTML = data.symbol;
+        company.innerHTML = data.companyName;
+        site.innerHTML = data.website;
+        ceo.innerHTML = data.CEO;
+        sec.innerHTML = data.sector;
+        emp.innerHTML = data.employees;
+        add.innerHTML = data.address;
+        st.innerHTML = data.state;
+        city.innerHTML = data.city;
+};
+
+

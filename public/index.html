@@ -8,14 +8,23 @@
     <script type="text/javascript" src="./bundle.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
   </head>
-  <body>
+  <body class="body">
     <div class="top">
       <h1 class="heading">Weekly Tech Stock Prices</h1>
+    </div>
+    <div class="dropdown">
+      <h2 class="selection-text">Choose a company's stocks to view: </h2>
+      <select>
+        <option value="Apple">Apple</option>
+        <option value="Microsoft">Microsoft</option>
+        <option value="Google">Google</option>
+        <option value="Facebook">Facebook</option>
+      </select>
     </div>
     <div class="company-charts-info">
       <div class="charts">
         <div class="company-info-div">
-          <h2 class="chart-heading">Performance:</h2>
+          <!-- <h2 class="chart-heading">Performance:</h2> -->
           <svg class="line-chart" id="svg1"></svg>
         </div>
         <div>
@@ -23,9 +32,47 @@
         </div>
       </div>
       <div class="company-info-div">
-        <h2 class="chart-heading">Company Info:</h2>
+        <!-- <h2 class="chart-heading">Company Info:</h2> -->
         <div class="info-box">
-          
+          <table>
+            <tr>
+              <td>Symbol:</td>
+              <td id="symbol"></td>
+            </tr>
+            <tr>
+              <td>Website:</td>
+              <td id="site"></td>
+            </tr>
+            <tr>
+              <td>Company:</td>
+              <td id="company"></td>
+            </tr>
+            <tr>
+              <td>Employees:</td>
+              <td id="emp"></td>
+            </tr>
+            <tr>
+              <td>Sector:</td>
+              <td id="sec"></td>
+            </tr>
+            <tr>
+              <td>City:</td>
+              <td id="city"></td>
+            </tr>
+            <tr>
+              <td>Address:</td>
+              <td id="add"></td>
+            </tr>
+            <tr>
+              <td>State:</td>
+              <td id="st"></td>
+            </tr>
+            <tr>
+              <td>CEO:</td>
+              <td id="ceo"></td>
+            </tr>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
