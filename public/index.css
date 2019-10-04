@@ -1,12 +1,13 @@
 
 .top {
-    padding: 50px;
+    padding: 45px;
     background: blue;
 }
 
 .heading {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 35px;
+    font-size: 40px;
+    font-weight: 600;
     color: white;
 }
 
@@ -17,9 +18,14 @@
     padding-left: 50px;
 }
 
+
+
 .selection-text {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 25px;
+    color: white;
+    font-weight: 600;
+    padding-right: 10px;
 }
 
 .company-charts-info {
@@ -38,7 +44,7 @@
     display: flex;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     padding: 30px;
-    width: 500px;
+    width: 600px;
     height: 800px;;
 }
 
@@ -50,6 +56,7 @@
 .closing-div {
     font-size: 36px;
     font-weight: 600;
+    color: white;
 }
 
 .chart-heading {
@@ -71,6 +78,7 @@
     font-size: 45px;
     font-weight: 600;
     padding-left: 10px;
+    color: white;
 }
 
 .exch {
@@ -78,25 +86,31 @@
     color: #464e56;
     font-weight: 400;
     font-size: 20px;
+    color: white;
 }
 
 .close-time {
     color: #464e56;
     font-weight: 400;
     font-size: 15px;
+    
 }
 
 .table-info {
     line-height: 1.7;
     vertical-align: top;
+    color: white;
     /* padding-top: 10px; */
 }
 .bold {
     font-weight: 600;
+    color: white;
 }
 
 .line-chart {
-    border: 1px solid black;
+    border: 1px solid white;
+    background: rgb(28, 27, 27);
+     color: white;
     /* transform: translateY(20px); */
     
 }
@@ -104,11 +118,13 @@
 .comp-name {
     font-size: 45px;
     font-weight: 600;
+    color: white;
 }
 
 .change-font {
     font-size: 24px;
     padding-left: 10px;
+    
 }
 
 .map-div {

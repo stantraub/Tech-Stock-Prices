@@ -1,5 +1,6 @@
 let symbol = 'aapl';
-let chart = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/5d?token=pk_dfb132b12db14003bfeb90dc058b276c&chartCloseOnly=true`;
+let interval = '5d'
+let chart = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/${interval}?token=pk_dfb132b12db14003bfeb90dc058b276c&chartCloseOnly=true`;
 let info = `https://cloud.iexapis.com/stable/stock/${symbol}/company?token=pk_dfb132b12db14003bfeb90dc058b276c&format=json`;
 // const api = 'https://api.coindesk.com/v1/bpi/historical/close.json?start=2017-12-31&end=2018-04-01';
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -22,12 +23,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
     let dropval = document.getElementById('dropval');
 
     dropval.onchange = function () {
-        let symbol = document.getElementById('dropval').value;
-        console.log(symbol);
+        symbol = document.getElementById('dropval').value;
+        // console.log(symbol);
         
         chart = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/5d?token=pk_dfb132b12db14003bfeb90dc058b276c&chartCloseOnly=true`;
         info = `https://cloud.iexapis.com/stable/stock/${symbol}/company?token=pk_dfb132b12db14003bfeb90dc058b276c&format=json`;
-        console.log(chart);
+        // console.log(chart);
         fetch(chart)
             .then(function (response) { return response.json(); })
             .then(function (data) {
@@ -56,7 +57,8 @@ function parseData(data) {
     let arr = [];
     // console.log(data);
     for (let i = 0; i < data.length; i++) {
-        arr.push({ date: new Date(data[i].date), //date            
+        arr.push({ 
+            date: new Date(data[i].date), //date            
             close: data[i].close //convert string to number         
         });   
 
@@ -79,7 +81,7 @@ function parseData(data) {
         change.style.color = "Red";
         change.innerHTML = "-" + Math.abs(difference);
     } else {
-        change.style.color = "Green";
+        change.style.color = "Lime";
         change.innerHTML = "+" + difference;
     }
 
@@ -87,7 +89,7 @@ function parseData(data) {
         percentage.style.color = "Red";
         percentage.innerHTML = "(" + "-" + Math.abs(difpercent) + "%" + ")";
     } else {
-        percentage.style.color = "Green";
+        percentage.style.color = "Lime";
         percentage.innerHTML = "(" + "+" + difpercent + "%" + ")";
     }
     return arr;
@@ -101,12 +103,35 @@ function drawChart(data) {
     let width = svgWidth - margin.left - margin.right; 
     let height = svgHeight - margin.top - margin.bottom;
 
-    d3.select('#svg1').selectAll("*").remove();
-    let svg1 = d3.select('#svg1')
+    // find data range
+    const xMin = d3.min(data, d => {
+        return d['date'];
+    });
+    const xMax = d3.max(data, d => {
+        return d['date'];
+    });
+    const yMin = d3.min(data, d => {
+        return d['close'];
+    });
+    const yMax = d3.max(data, d => {
+        return d['close'];
+    });
+    // scales for the charts
+    const xScale = d3
+        .scaleTime()
+        .domain([xMin, xMax])
+        .range([0, width]);
+    const yScale = d3
+        .scaleLinear()
+        .domain([yMin - 5, yMax])
+        .range([height, 0]);
+
+    d3.select('#svg').selectAll("*").remove();
+    let svg = d3.select('#svg')
         .attr("width", svgWidth)
         .attr("height", svgHeight)
 
-    let g = svg1.append('g')
+    let g = svg.append('g')
         .attr("transform", "translate(" + margin.left + "," + margin.top +")");
 
     let x = d3.scaleTime()
@@ -127,7 +152,8 @@ function drawChart(data) {
     //    x.domain(d3.extent(data, function (d) { return d.date })); y.domain(d3.extent(data, function (d) { return d.value }));
 
 
-    let line = d3.line()
+    let line = d3
+        .line()
         .x(function (d) {
             // console.log(d);
             { return x(d.date) }
@@ -152,17 +178,18 @@ function drawChart(data) {
         .attr("y", 6)
         .attr("dy", "0.71em")
         .attr("text-anchor", "end")
-        .text("Close ($)");
+        .text("Close ($)")
+        .style('fill', 'white');
 
     g.append("path")
         .datum(data)
         .attr("fill", "none")
-        .attr("stroke", "green")
+        .attr("stroke", "lime")
         .attr("stroke-linejoin", "round")
         .attr("stroke-linecap", "round")
         .attr("stroke-width", 1.5)
         .attr("d", line);
-
+   
 }
 
 function parseCompanyData(data) {
