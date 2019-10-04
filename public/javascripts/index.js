@@ -35,6 +35,8 @@ function parseData(data) {
     const closing = document.getElementById('closing');
     const change = document.getElementById('change');
     const percentage = document.getElementById('percentage');
+ 
+
     let last = arr[arr.length - 1];
     
     let difference = Math.round((last.close - arr[arr.length - 2].close)* 100)/100;
@@ -43,7 +45,6 @@ function parseData(data) {
     // let difference = 5.60
     console.log(change);
     closing.innerHTML = last.close;
-    
     if (difference < 0) {
         change.style.color = "Red";
         change.innerHTML = "-" + Math.abs(difference);
@@ -135,6 +136,7 @@ function drawChart(data) {
 
 function parseCompanyData(data) {
         const symbol = document.getElementById('symbol');
+        const exchange = document.getElementById('exchange');
         const company = document.getElementById('company');
         const site = document.getElementById('site');
         const ceo = document.getElementById('ceo');
@@ -143,7 +145,8 @@ function parseCompanyData(data) {
         const st = document.getElementById('st');
         const city = document.getElementById('city');
     
-        symbol.innerHTML = data.symbol;
+        symbol.innerHTML = "(" + data.symbol + ")";
+        exchange.innerHTML = data.exchange;
         company.innerHTML = data.companyName;
         site.innerHTML = data.website;
         ceo.innerHTML = data.CEO;
