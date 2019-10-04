@@ -1,6 +1,6 @@
-
-const chart = 'https://cloud.iexapis.com/stable/stock/aapl/chart/5d?token=pk_dfb132b12db14003bfeb90dc058b276c&chartCloseOnly=true';
-const info = 'https://cloud.iexapis.com/stable/stock/aapl/company?token=pk_dfb132b12db14003bfeb90dc058b276c&format=json';
+let symbol = 'aapl';
+let chart = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/5d?token=pk_dfb132b12db14003bfeb90dc058b276c&chartCloseOnly=true`;
+let info = `https://cloud.iexapis.com/stable/stock/${symbol}/company?token=pk_dfb132b12db14003bfeb90dc058b276c&format=json`;
 // const api = 'https://api.coindesk.com/v1/bpi/historical/close.json?start=2017-12-31&end=2018-04-01';
 document.addEventListener("DOMContentLoaded", function (event) {
     fetch(chart)
@@ -24,6 +24,29 @@ document.addEventListener("DOMContentLoaded", function (event) {
     dropval.onchange = function () {
         let symbol = document.getElementById('dropval').value;
         console.log(symbol);
+        
+        chart = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/5d?token=pk_dfb132b12db14003bfeb90dc058b276c&chartCloseOnly=true`;
+        info = `https://cloud.iexapis.com/stable/stock/${symbol}/company?token=pk_dfb132b12db14003bfeb90dc058b276c&format=json`;
+        console.log(chart);
+        fetch(chart)
+            .then(function (response) { return response.json(); })
+            .then(function (data) {
+                //DO SOMETHING WITH DATA      
+                let parsedData = parseData(data);
+             
+                drawChart(parsedData);
+            });
+
+        fetch(info)
+            .then(function (response) { return response.json(); })
+            .then(function (data) {
+                //DO SOMETHING WITH DATA      
+
+                parseCompanyData(data);
+            });
+
+        
+
     }
 
     
@@ -78,6 +101,7 @@ function drawChart(data) {
     let width = svgWidth - margin.left - margin.right; 
     let height = svgHeight - margin.top - margin.bottom;
 
+    d3.select('#svg1').selectAll("*").remove();
     let svg1 = d3.select('#svg1')
         .attr("width", svgWidth)
         .attr("height", svgHeight)
