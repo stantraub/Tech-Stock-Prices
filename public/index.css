@@ -1,7 +1,7 @@
 
 .top {
     padding: 45px;
-    background: blue;
+    background: rgba(29,29,31,0.6);;
 }
 
 .heading {
@@ -109,8 +109,10 @@
 
 .line-chart {
     border: 1px solid white;
+    border-radius: 5px;
+    border-radius: 3px;
     background: rgb(28, 27, 27);
-     color: white;
+    color: white;
     /* transform: translateY(20px); */
     
 }
@@ -129,4 +131,5 @@
 
 .map-div {
     width: 500px;
+  
 }
