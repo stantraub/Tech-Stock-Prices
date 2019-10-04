@@ -17,14 +17,21 @@ document.addEventListener("DOMContentLoaded", function (event) {
             //DO SOMETHING WITH DATA      
         
             parseCompanyData(data);
-        })
+        });
+
+    let dropval = document.getElementById('dropval');
+
+    dropval.onchange = function () {
+        let symbol = document.getElementById('dropval').value;
+        console.log(symbol);
+    }
 
     
 });
 
 function parseData(data) {
     let arr = [];
-    console.log(data);
+    // console.log(data);
     for (let i = 0; i < data.length; i++) {
         arr.push({ date: new Date(data[i].date), //date            
             close: data[i].close //convert string to number         
@@ -43,7 +50,7 @@ function parseData(data) {
     let difpercent = Math.round(((last.close - arr[arr.length - 2].close) / arr[arr.length - 2].close) * 100) / 100;
     // rounded = Math.round(difference * 100)/100;
     // let difference = 5.60
-    console.log(change);
+    // console.log(change);
     closing.innerHTML = last.close;
     if (difference < 0) {
         change.style.color = "Red";
@@ -98,7 +105,7 @@ function drawChart(data) {
 
     let line = d3.line()
         .x(function (d) {
-            console.log(d);
+            // console.log(d);
             { return x(d.date) }
         }
         
@@ -156,5 +163,6 @@ function parseCompanyData(data) {
         st.innerHTML = data.state;
         city.innerHTML = data.city;
 };
+
 
 

@@ -55,11 +55,11 @@
     </div>
     <div class="dropdown">
       <h2 class="selection-text">Choose a company's stocks to view: </h2>
-      <select>
-        <option value="AAPL">Apple</option>
-        <option value="Microsoft">Microsoft</option>
-        <option value="Google">Google</option>
-        <option value="Facebook">Facebook</option>
+      <select id='dropval'>
+        <option value="aapl">Apple</option>
+        <option value="msft">Microsoft</option>
+        <option value="goog">Google</option>
+        <option value="fb">Facebook</option>
       </select>
     </div>
     <div class="company-charts-info">
@@ -119,6 +119,10 @@
               <td class="bold" id="sec"></td>
             </tr>
             <tr>
+              <td>Chief Executive Officer:</td>
+              <td class="bold" id="ceo"></td>
+            </tr>
+            <tr>
               <td id="city"></td>
             </tr>
             <tr>
@@ -127,11 +131,7 @@
             <tr>
               <td id="st"></td>
             </tr>
-            <tr>
-              <td>Chief Executive Officer:</td>
-              <td class="bold" id="ceo"></td>
-            </tr>
-            </tr>
+           
           </table>
           <div class="map-div" id='map'>
           
