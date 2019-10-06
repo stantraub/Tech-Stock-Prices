@@ -1,7 +1,7 @@
 
 .top {
     padding: 45px;
-    background: rgba(29,29,31,0.6);;
+    background: rgba(29,29,31,0.6);
 }
 
 .heading {
@@ -111,7 +111,7 @@
     border: 1px solid white;
     border-radius: 5px;
     border-radius: 3px;
-    background: rgb(28, 27, 27);
+    background: rgba(29,29,31,0.6);
     color: white;
     /* transform: translateY(20px); */
     
