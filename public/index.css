@@ -5,11 +5,16 @@
     
 }
 
+.socials-div {
+    padding: 10px;
+    justify-content: space-between;
+}
+
 .linkedin {
-background: rgba(29,29,31,0.0);
-padding: 10px;
-/* width: 30px;
-height: 30px; */
+    background: rgba(29,29,31,0.0);
+    padding: 10px; 
+    width: 30px;
+    height: 30px;
 
 }
 
