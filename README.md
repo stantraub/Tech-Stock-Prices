@@ -4,6 +4,7 @@
 [Live Site](https://stantraub.github.io/Tech-Stock-Prices/public/)
 
 ![alt text](https://tech-stocks.s3-us-west-1.amazonaws.com/main+site.png)
+
 Technologies
 - Vanilla Javascript
 - D3.js
