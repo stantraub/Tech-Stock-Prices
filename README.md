@@ -2,7 +2,7 @@
 
 ## Stock Data Visualization for Major Tech Companies
 
-
+![alt text](https://tech-stocks.s3-us-west-1.amazonaws.com/main+site.png)
 Technologies
 - Vanilla Javascript
 - D3.js
