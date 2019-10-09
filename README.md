@@ -1,21 +1,20 @@
-# Simple Node API Backend
+# Tech Stock Prices
 
-Simple Node Backend for avoiding CORS issues in development
-- npm install
-- npm run build
-- npm start
+## Stock Data Visualization for Major Tech Companies
+
 
 Technologies
-- express
-- axios
-- webpack
+- Vanilla Javascript
+- D3.js
+- HTML5/CSS
 
-Implementation
+## Features 
 
-This project allows you to serve your HTML and JS from a custom backend that performs API requests to an external API.
+- Dropdown menu to select a tech company to view 
+- Company name and current stock close price as well as percentage change/number between previous and last closing price.
+- Google Maps API shows location of a company's headquarters
+- Company Info Section with data retreived from IEX API
 
-app.js contains the routes that you need to get your data. Customize them according to the paths you wish to use in your code, and the API you wish to access
 
-Write your JS in the javascripts folder; your entry file is index.js.
 
-In the entry file 
+
