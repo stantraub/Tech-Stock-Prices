@@ -1,7 +1,8 @@
 # Tech Stock Prices
 
 ## Stock Data Visualization for Major Tech Companies
-https://stantraub.github.io/Tech-Stock-Prices/public/
+[Live Site](https://stantraub.github.io/Tech-Stock-Prices/public/)
+
 ![alt text](https://tech-stocks.s3-us-west-1.amazonaws.com/main+site.png)
 Technologies
 - Vanilla Javascript
