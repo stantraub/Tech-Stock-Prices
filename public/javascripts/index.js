@@ -105,15 +105,15 @@ function drawChart(data) {
         type: 'line',
         data: {
             datasets: [{
-            label: 'Apple',
-            borderColor: '#7B1FA2',
-            backgroundColor: '#7B1FA2',
-            data: data.map((day) => (
-                {
-                    x: new Date(day.date),
-                    y: (day.close),
-                })),
-            }
+                label: 'Apple',
+                borderColor: '#32CD32',
+                backgroundColor: '#32CD32',
+                data: data.map((day) => (
+                    {
+                        x: new Date(day.date),
+                        y: (day.close),
+                    })),
+                }
             ],
         },
         options: {
@@ -132,16 +132,18 @@ function drawChart(data) {
                     scaleLabel: {
                         display: true,
                         labelString: 'Week',
+                        fontColor: 'white',
                     },
                     ticks: {
                         source: 'data',
+                        fontColor: 'white',
                     },
                     type: 'time',
                     time: {
-                        unit: 'month',
+                        unit: 'week',
                         round: 'day',
                         displayFormats: {
-                            month: 'MMM',
+                            'week': 'MMM DD',
                         },
                     },
                 }],
@@ -150,17 +152,25 @@ function drawChart(data) {
                     scaleLabel: {
                         display: true,
                         labelString: 'Value',
+                        fontColor: 'white',
                     },
                     ticks: {
                         beginAtZero: true,
+                        fontColor: 'white',
                     },
                 }],
             },
             title: {
                 display: true,
                 fontSize: 20,
+                fontColor: 'white',
                 text: `Stock Prices Past 5 days`,
             },
+            legend: {
+                labels: {
+                    fontColor: 'white' //set your desired color
+                }
+            }
         }
     });
     return myChart;
