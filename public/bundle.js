@@ -73,8 +73,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chart_js__);
 let symbol = 'aapl';
 
-let interval = '5d'
-let chart = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/${interval}?token=pk_dfb132b12db14003bfeb90dc058b276c&chartCloseOnly=true`;
+let interval = '1y'
+let chart = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/${interval}?token=pk_dfb132b12db14003bfeb90dc058b276c&chartCloseOnly=true&chartInterval=30`;
 let info = `https://cloud.iexapis.com/stable/stock/${symbol}/company?token=pk_dfb132b12db14003bfeb90dc058b276c&format=json`;
 // const api = 'https://api.coindesk.com/v1/bpi/historical/close.json?start=2017-12-31&end=2018-04-01';
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         symbol = document.getElementById('dropval').value;
         // console.log(symbol);
 
-        chart = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/5d?token=pk_dfb132b12db14003bfeb90dc058b276c&chartCloseOnly=true`;
+        chart = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/1y?token=pk_dfb132b12db14003bfeb90dc058b276c&chartCloseOnly=true&chartInterval=30`;
         info = `https://cloud.iexapis.com/stable/stock/${symbol}/company?token=pk_dfb132b12db14003bfeb90dc058b276c&format=json`;
         // console.log(chart);
         fetch(chart)
@@ -205,7 +205,7 @@ function drawChart(data) {
                     display: true,
                     scaleLabel: {
                         display: true,
-                        labelString: 'Week',
+                        labelString: 'Month',
                         fontSize: 15,
                         fontColor: 'white',
                         
@@ -219,7 +219,7 @@ function drawChart(data) {
                         unit: 'month',
                         round: 'day',
                         displayFormats: {
-                            'month': ' MMM DD',
+                            'month': ' MMM',
                         },
                     },
                     gridLines: {
