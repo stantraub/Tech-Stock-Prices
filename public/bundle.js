@@ -251,7 +251,7 @@ function drawChart(data) {
                 display: true,
                 fontSize: 20,
                 fontColor: 'white',
-                text: `Stock Prices Past 5 days`,
+                text: `Past 12 months`,
             },
             legend: {
                 labels: {
