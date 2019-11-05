@@ -181,6 +181,7 @@ function drawChart(data) {
                 label: 'Apple',
                 borderColor: '#32CD32',
                 backgroundColor: '#32CD32',
+                spanGaps: true,
                 data: data.map((day) => (
                     {
                         x: new Date(day.date),
@@ -205,7 +206,9 @@ function drawChart(data) {
                     scaleLabel: {
                         display: true,
                         labelString: 'Week',
+                        fontSize: 15,
                         fontColor: 'white',
+                        
                     },
                     ticks: {
                         source: 'data',
@@ -213,11 +216,15 @@ function drawChart(data) {
                     },
                     type: 'time',
                     time: {
-                        unit: 'week',
+                        unit: 'month',
                         round: 'day',
                         displayFormats: {
-                            'week': 'MMM DD',
+                            'month': ' MMM DD',
                         },
+                    },
+                    gridLines: {
+                        display: true,
+                        color: "#FFFFFF"
                     },
                 }],
                 yAxes: [{
@@ -225,11 +232,18 @@ function drawChart(data) {
                     scaleLabel: {
                         display: true,
                         labelString: 'Value',
+                        fontSize: 15,
                         fontColor: 'white',
                     },
                     ticks: {
-                        beginAtZero: true,
+                        beginAtZero: false,
                         fontColor: 'white',
+                        // stepSize: 50,
+                        // maxTicksLimit: 10
+                    },
+                    gridLines: {
+                        display: true,
+                        color: "#FFFFFF"
                     },
                 }],
             },
