@@ -16898,7 +16898,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         .then(function (response) { return response.json(); })
         .then(function (data) {
             //DO SOMETHING WITH DATA      
-
+            window.company = data.companyName;
             parseCompanyData(data);
         });
 
@@ -16929,7 +16929,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             .then(function (response) { return response.json(); })
             .then(function (data) {
                 //DO SOMETHING WITH DATA      
-
+                window.company = data.companyName;
                 parseCompanyData(data);
             });
 
@@ -16993,16 +16993,16 @@ function parseData(data) {
 // }
 
 function drawChart(data) {
-            // console.log(data);
+    let company = window.company
     if (window.myChart) window.myChart.destroy();
     var ctx = document.getElementById("line-chart").getContext('2d');
     window.myChart = new __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a(ctx, {
         type: 'line',
         data: {
             datasets: [{
-                label: 'Apple',
-                borderColor: '#32CD32',
-                backgroundColor: '#32CD32',
+                label: `${company}`,
+                borderColor: 'Lime',
+                backgroundColor: 'Lime',
                 spanGaps: true,
                 data: data.map((day) => (
                     {
@@ -17082,10 +17082,11 @@ function drawChart(data) {
             }
         }
     });
-    // myChart.update();
+    // window.myChart.update();
 }
 
 function parseCompanyData(data) {
+    console.log(data);
     const symbol = document.getElementById('symbol');
     const exchange = document.getElementById('exchange');
     const company = document.getElementById('company');
@@ -17095,6 +17096,7 @@ function parseCompanyData(data) {
     const emp = document.getElementById('emp');
     const st = document.getElementById('st');
     const city = document.getElementById('city');
+    
 
     symbol.innerHTML = "(" + data.symbol + ")";
     exchange.innerHTML = data.exchange;
