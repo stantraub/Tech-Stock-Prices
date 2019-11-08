@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             //DO SOMETHING WITH DATA      
             let parsedData = parseData(data);
             drawChart(parsedData);
+            
         });
 
     fetch(info)
@@ -24,8 +25,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
     let dropval = document.getElementById('dropval');
 
     dropval.onchange = function () {
+    
         symbol = document.getElementById('dropval').value;
-        // console.log(symbol);
+        
 
         chart = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/1y?token=pk_dfb132b12db14003bfeb90dc058b276c&chartCloseOnly=true&chartInterval=30`;
         info = `https://cloud.iexapis.com/stable/stock/${symbol}/company?token=pk_dfb132b12db14003bfeb90dc058b276c&format=json`;
@@ -35,8 +37,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
             .then(function (data) {
                 //DO SOMETHING WITH DATA      
                 let parsedData = parseData(data);
-                
+                window.myChart.update();
                 drawChart(parsedData);
+               
+                // oldChart.destroy();
+                // chart.update();
+                // removeData(chart);
             });
 
         fetch(info)
@@ -98,10 +104,19 @@ function parseData(data) {
 
 }
 
+// function removeData(chart) {
+//     chart.data.labels.pop();
+//     chart.data.datasets.forEach((dataset) => {
+//         dataset.data.pop();
+//     });
+//     chart.update();
+// }
+
 function drawChart(data) {
-    console.log(data);
+            // console.log(data);
+    
     var ctx = document.getElementById("line-chart").getContext('2d');
-    var myChart = new Chart(ctx, {
+    window.myChart = new Chart(ctx, {
         type: 'line',
         data: {
             datasets: [{
@@ -187,7 +202,7 @@ function drawChart(data) {
             }
         }
     });
-    return myChart;
+    // myChart.update();
 }
 
 function parseCompanyData(data) {
