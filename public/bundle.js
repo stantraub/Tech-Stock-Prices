@@ -16994,7 +16994,7 @@ function parseData(data) {
 
 function drawChart(data) {
             // console.log(data);
-    
+    if (window.myChart) window.myChart.destroy();
     var ctx = document.getElementById("line-chart").getContext('2d');
     window.myChart = new __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a(ctx, {
         type: 'line',

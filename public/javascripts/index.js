@@ -114,7 +114,7 @@ function parseData(data) {
 
 function drawChart(data) {
             // console.log(data);
-    
+    if (window.myChart) window.myChart.destroy();
     var ctx = document.getElementById("line-chart").getContext('2d');
     window.myChart = new Chart(ctx, {
         type: 'line',
