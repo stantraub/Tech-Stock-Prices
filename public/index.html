@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="index.css">
     <script type="text/javascript" src="./bundle.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script> -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1TKWOFXouxVLLINDYmhk5XVyR7BQaxxw&callback=initMap" async
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1TKWOFXouxVLLINDYmhk5XVyR7BQaxxw&callback=initMap" async
       defer></script>
         <script>
           function initMap() {
@@ -47,7 +47,7 @@
         height: 400px;
         width: 100%;
       }
-    </style>
+    </style> -->
   </head>
   <body class="body">
     <div class="top">
@@ -73,6 +73,26 @@
           <!-- <h2 class="chart-heading">Performance:</h2> -->
           <!-- <svg class="line-chart" id="svg"></svg> -->
           <canvas id="line-chart" width="650px" height="500px"></canvas>
+        </div>
+        <div class="news">
+          <h1 class="news-header">Recent News</h1>
+          <div class="news-item">
+            <h2 id="article1Title" class="news-item-title"></h2>
+          </div>
+          <div class="news-item">
+            <h2 id="article2Title" class="news-item-title"></h2>
+          </div>
+          <div class="news-item">
+            <h2 id="article3Title" class="news-item-title"></h2>
+          </div>
+          <div class="news-item">
+            <h2 id="article4Title" class="news-item-title"></h2>
+          </div>
+          <div class="news-item">
+            <h2 id="article5Title" class="news-item-title"></h2>
+          </div>
+
+          
         </div>
       </div>
       <div class="company-chart-div">
@@ -137,9 +157,6 @@
            
           </table>
           <div class="map-div" id='map'>
-          
-          
-          
           </div>
         </div>
         

@@ -1,8 +1,10 @@
 let symbol = 'aapl';
+let query = 'Apple';
 import Chart from 'chart.js';
 let interval = '1y'
 let chart = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/${interval}?token=pk_dfb132b12db14003bfeb90dc058b276c&chartCloseOnly=true&chartInterval=30`;
 let info = `https://cloud.iexapis.com/stable/stock/${symbol}/company?token=pk_dfb132b12db14003bfeb90dc058b276c&format=json`;
+let news = `https://newsapi.org/v2/top-headlines?q=${query}&apiKey=ef82b8a9600940688b24de439e53ce2c`
 // const api = 'https://api.coindesk.com/v1/bpi/historical/close.json?start=2017-12-31&end=2018-04-01';
 document.addEventListener("DOMContentLoaded", function (event) {
     function firstApiCall(chart) {
@@ -29,6 +31,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
         .then(
             firstApiCall(chart)
         )
+    
+    fetch(news)
+        .then(function (response) { return response.json(); })
+        .then(function (data) {
+            parseNews(data);
+            //DO SOMETHING WITH DATA      
+            // window.company = data.companyName;
+            // parseCompanyData(data);
+        })
+
 
     let dropval = document.getElementById('dropval');
 
@@ -218,7 +230,7 @@ function drawChart(data) {
 }
 
 function parseCompanyData(data) {
-    console.log(data);
+    // console.log(data);
     const symbol = document.getElementById('symbol');
     const exchange = document.getElementById('exchange');
     const company = document.getElementById('company');
@@ -241,6 +253,31 @@ function parseCompanyData(data) {
     st.innerHTML = data.state;
     city.innerHTML = data.city;
 };
+
+function parseNews(data) {
+    let topNews = [];
+
+    while (topNews.length < 5) {
+        let article = data.articles.shift()
+        topNews.push(article);
+    }
+    // debugger;
+
+    const article1 = document.getElementById('article1');
+    const article2 = document.getElementById('article2')
+    const article3 = document.getElementById('article3')
+    const article4 = document.getElementById('article4')
+    const article5 = document.getElementById('article5')
+
+    article1Title.innerHTML = topNews[0].title;
+    article2Title.innerHTML = topNews[1].title;
+    article3Title.innerHTML = topNews[2].title;
+    article4Title.innerHTML = topNews[3].title;
+    article5Title.innerHTML = topNews[4].title;
+
+    return topNews;
+
+}
 
 
 
