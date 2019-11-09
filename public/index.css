@@ -174,8 +174,18 @@
 .news-item {
     padding: 20px 20px;
     margin: 0px -20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .news-item-title {
     font-weight: 500;
+}
+
+.news-item-img {
+    margin-left: 30px;
+    max-width: 200px;
 }

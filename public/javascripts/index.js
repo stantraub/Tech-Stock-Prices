@@ -47,10 +47,26 @@ document.addEventListener("DOMContentLoaded", function (event) {
     dropval.onchange = function () {
     
         symbol = document.getElementById('dropval').value;
-        
+        // query = window.company
+        if (symbol === 'aapl') {
+            query = 'Apple';
+        } else if (symbol === 'msft') {
+            query = 'Microsoft';
+        } else if (symbol === 'goog') {
+            query = 'Google';
+        } else if (symbol === 'fb') {
+            query = 'Facebook';
+        } else if (symbol === 'nvda') {
+            query = 'Nvidia';
+        } else if (symbol === 'amzn') {
+            query = 'Amazon';
+        } else if (symbol === 'nflx') {
+            query = 'Netflix';
+        }
 
         chart = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/1y?token=pk_dfb132b12db14003bfeb90dc058b276c&chartCloseOnly=true&chartInterval=30`;
         info = `https://cloud.iexapis.com/stable/stock/${symbol}/company?token=pk_dfb132b12db14003bfeb90dc058b276c&format=json`;
+        news = `https://newsapi.org/v2/top-headlines?q=${query}&apiKey=ef82b8a9600940688b24de439e53ce2c`
         // console.log(chart);
         function chartApiCall(chart){
             fetch(chart)
@@ -76,6 +92,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
             .then(
                 chartApiCall(chart)
             )
+        
+        fetch(news)
+            .then(function (response) { return response.json(); })
+            .then(function (data) {
+                // debugger
+                parseNews(data);
+                //DO SOMETHING WITH DATA      
+                // window.company = data.companyName;
+                // parseCompanyData(data);
+            })
 
 
 
@@ -144,7 +170,7 @@ function drawChart(data) {
         type: 'line',
         data: {
             datasets: [{
-                label: `${window.company}`,
+                label: `${query}`,
                 borderColor: 'Lime',
                 backgroundColor: 'Lime',
                 spanGaps: true,
@@ -269,11 +295,19 @@ function parseNews(data) {
     const article4 = document.getElementById('article4')
     const article5 = document.getElementById('article5')
 
+    // debugger;
+
     article1Title.innerHTML = topNews[0].title;
     article2Title.innerHTML = topNews[1].title;
     article3Title.innerHTML = topNews[2].title;
     article4Title.innerHTML = topNews[3].title;
     article5Title.innerHTML = topNews[4].title;
+
+    document.getElementById('img1').src = topNews[0].urlToImage
+    document.getElementById('img2').src = topNews[1].urlToImage
+    document.getElementById('img3').src = topNews[2].urlToImage
+    document.getElementById('img4').src = topNews[3].urlToImage
+    document.getElementById('img5').src = topNews[4].urlToImage
 
     return topNews;
 
