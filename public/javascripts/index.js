@@ -5,22 +5,30 @@ let chart = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/${interval}?
 let info = `https://cloud.iexapis.com/stable/stock/${symbol}/company?token=pk_dfb132b12db14003bfeb90dc058b276c&format=json`;
 // const api = 'https://api.coindesk.com/v1/bpi/historical/close.json?start=2017-12-31&end=2018-04-01';
 document.addEventListener("DOMContentLoaded", function (event) {
-    fetch(chart)
-        .then(function (response) { return response.json(); })
-        .then(function (data) {
-            //DO SOMETHING WITH DATA      
-            let parsedData = parseData(data);
-            drawChart(parsedData);
-            
-        });
+    function firstApiCall(chart) {
+        fetch(chart)
+            .then(function (response) { return response.json(); })
+            .then(function (data) {
+                //DO SOMETHING WITH DATA      
+                let parsedData = parseData(data);
+                // window.myChart.update();
+                drawChart(parsedData);
 
+                // oldChart.destroy();
+                // chart.update();
+                // removeData(chart);
+            });
+    }
     fetch(info)
         .then(function (response) { return response.json(); })
         .then(function (data) {
             //DO SOMETHING WITH DATA      
             window.company = data.companyName;
             parseCompanyData(data);
-        });
+        })
+        .then(
+            firstApiCall(chart)
+        )
 
     let dropval = document.getElementById('dropval');
 
@@ -32,26 +40,30 @@ document.addEventListener("DOMContentLoaded", function (event) {
         chart = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/1y?token=pk_dfb132b12db14003bfeb90dc058b276c&chartCloseOnly=true&chartInterval=30`;
         info = `https://cloud.iexapis.com/stable/stock/${symbol}/company?token=pk_dfb132b12db14003bfeb90dc058b276c&format=json`;
         // console.log(chart);
-        fetch(chart)
-            .then(function (response) { return response.json(); })
-            .then(function (data) {
-                //DO SOMETHING WITH DATA      
-                let parsedData = parseData(data);
-                window.myChart.update();
-                drawChart(parsedData);
-               
-                // oldChart.destroy();
-                // chart.update();
-                // removeData(chart);
-            });
-
+        function chartApiCall(chart){
+            fetch(chart)
+                .then(function (response) { return response.json(); })
+                .then(function (data) {
+                    //DO SOMETHING WITH DATA      
+                    let parsedData = parseData(data);
+                    
+                    drawChart(parsedData);
+                    window.myChart.update();
+                    // oldChart.destroy();
+                    // chart.update();
+                    // removeData(chart);
+                });
+        }
         fetch(info)
             .then(function (response) { return response.json(); })
             .then(function (data) {
                 //DO SOMETHING WITH DATA      
                 window.company = data.companyName;
                 parseCompanyData(data);
-            });
+            })
+            .then(
+                chartApiCall(chart)
+            )
 
 
 
@@ -113,14 +125,14 @@ function parseData(data) {
 // }
 
 function drawChart(data) {
-    let company = window.company
+    // let company = window.company
     if (window.myChart) window.myChart.destroy();
     var ctx = document.getElementById("line-chart").getContext('2d');
     window.myChart = new Chart(ctx, {
         type: 'line',
         data: {
             datasets: [{
-                label: `${company}`,
+                label: `${window.company}`,
                 borderColor: 'Lime',
                 backgroundColor: 'Lime',
                 spanGaps: true,
