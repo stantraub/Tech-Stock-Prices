@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             .then(function (response) { return response.json(); })
             .then(function (data) {
                 //DO SOMETHING WITH DATA      
-                window.company = data.companyName;
+                // window.company = data.companyName;
                 parseCompanyData(data);
             })
             .then(
