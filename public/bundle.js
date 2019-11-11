@@ -16933,7 +16933,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         } else if (symbol === 'msft') {
             query = 'Microsoft';
         } else if (symbol === 'goog') {
-            query = 'Google';
+            query = 'Alphabet';
         } else if (symbol === 'fb') {
             query = 'Facebook';
         } else if (symbol === 'nvda') {
@@ -17183,12 +17183,25 @@ function parseNews(data) {
     article4Title.innerHTML = topNews[3].title;
     article5Title.innerHTML = topNews[4].title;
 
+    article1Description.innerHTML = topNews[0].description;
+    article2Description.innerHTML = topNews[1].description;
+    article3Description.innerHTML = topNews[2].description;
+    article4Description.innerHTML = topNews[3].description;
+    article5Description.innerHTML = topNews[4].description;
+
+    document.getElementById('link1').href = topNews[0].url
+    document.getElementById('link2').href = topNews[1].url
+    document.getElementById('link3').href = topNews[2].url
+    document.getElementById('link4').href = topNews[3].url
+    document.getElementById('link5').href = topNews[4].url
+
     document.getElementById('img1').src = topNews[0].urlToImage
     document.getElementById('img2').src = topNews[1].urlToImage
     document.getElementById('img3').src = topNews[2].urlToImage
     document.getElementById('img4').src = topNews[3].urlToImage
     document.getElementById('img5').src = topNews[4].urlToImage
 
+    console.log(topNews);
     return topNews;
 
 }
