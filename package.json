@@ -24,7 +24,7 @@
     "chart.js": "^2.9.2",
     "express": "^4.15.3",
     "node-fetch": "^1.7.3",
-    "node-sass": "^4.7.2",
+    "node-sass": "^7.0.0",
     "sass-loader": "^6.0.7",
     "webpack": "^3.4.1"
   },
